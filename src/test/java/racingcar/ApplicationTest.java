@@ -1,13 +1,13 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -45,5 +45,21 @@ class ApplicationTest extends NsTest {
     public void 자동차생성_후_원시_포장된_이름_가져오기(){
         RacingCar racingCar = new RacingCar("test");
         assertThat(racingCar.getName()).isEqualTo("test");
+    }
+
+    @Test
+    public void 이름_다섯자_초과인_자동차_생성시_오류(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                new RacingCar("12345");
+                throw new RuntimeException();
+            }).isNotInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                new RacingCar("123456");
+                throw new RuntimeException();
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
