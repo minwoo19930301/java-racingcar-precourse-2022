@@ -27,6 +27,9 @@ public class RacingCar {
         private String value;
 
         private Name(String value) {
+            if (value.length() > MAXIMUM_LENGTH) {
+                throw new IllegalArgumentException();
+            }
             this.value = value;
         }
 
