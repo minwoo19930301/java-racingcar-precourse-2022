@@ -21,7 +21,7 @@ public class RacingCar {
         return position.getValue();
     }
 
-    public class Name{
+    private class Name{
         private static final int MAXIMUM_LENGTH = 5;
 
         private String value;
