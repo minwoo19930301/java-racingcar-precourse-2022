@@ -29,4 +29,16 @@ public class ScoreBoard {
         }
         return map.get(max);
     }
+
+    public void addNewRacingCars(List<String> carNames){
+        for (String carName : carNames) {
+            racingCarStats.add(new RacingCar(carName));
+        }
+    }
+
+    public void moveAllCars(){
+        for(RacingCar car : racingCarStats){
+            car.moveOrNot();
+        }
+    }
 }

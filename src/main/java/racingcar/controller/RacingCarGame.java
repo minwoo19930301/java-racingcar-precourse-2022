@@ -2,10 +2,10 @@ package racingcar.controller;
 
 
 import java.util.List;
-import racingcar.model.RacingCar;
 import racingcar.model.RetryCount;
 import racingcar.model.ScoreBoard;
 import racingcar.view.Input;
+import racingcar.view.Output;
 
 /**
  * @author: Minwoo Kim
@@ -18,9 +18,7 @@ public class RacingCarGame {
 
     private void createCars() {
         List<String> carNames = Input.getCarNamesUntilValid();
-        for (String carName : carNames) {
-            scoreBoard.getRacingCarStats().add(new RacingCar(carName));
-        }
+        scoreBoard.addNewRacingCars(carNames);
     }
 
     private void setRetryCount(){
@@ -30,11 +28,13 @@ public class RacingCarGame {
 
     private void proceedMoving(){
         int retryValue = retryCount.getValue();
-
+        for(int i=0; i< retryValue; i++){
+            scoreBoard.moveAllCars();
+            Output.printStatus(scoreBoard);
+        }
     }
 
     private void getWinners(){
-
     }
 
     public void start(){
