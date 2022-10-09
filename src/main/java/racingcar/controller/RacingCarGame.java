@@ -21,11 +21,11 @@ public class RacingCarGame {
         }
     }
 
-    private void setRetryCount(){
-
+    private int setRetryCount(){
+        return Input.getRetryCountUntilValid();
     }
 
-    private void proceedMoving(){
+    private void proceedMoving(int retryCount){
 
     }
 
@@ -35,8 +35,8 @@ public class RacingCarGame {
 
     public void start(){
         createCars();
-        setRetryCount();
-        proceedMoving();
+        int retryCount = setRetryCount();
+        proceedMoving(retryCount);
         getWinners();
     }
 }

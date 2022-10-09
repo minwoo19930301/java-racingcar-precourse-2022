@@ -12,5 +12,18 @@ public class Validation {
             throw new IllegalArgumentException();
         }
     }
-    
+
+    public static void checkRetryCount(String value){
+        if (value == null) {
+            throw new IllegalArgumentException();
+        }
+        try{
+            Integer.parseInt(value);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        if(Integer.parseInt(value) < 0){
+            throw new IllegalArgumentException();
+        }
+    }
 }
