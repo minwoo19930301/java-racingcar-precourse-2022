@@ -12,7 +12,7 @@ import racingcar.model.ScoreBoard;
 public class Output {
 
     private final static String GAME_RESULT_ANNOUNCE = "각 차수별 실행결과";
-    private final static String WINNER_ANNOUNCE_PATTERN = "최종우승자 : %s";
+    private final static String WINNER_ANNOUNCE_PATTERN = "최종 우승자 : %s";
     private final static String CAR_STATUS_OUTPUT_PATTERN = "%s : %s";
     private final static String ONE_MOVE_OUTPUT_FORMAT = "-";
     private final static String NAME_SPLIT_STANDARD = ",";
