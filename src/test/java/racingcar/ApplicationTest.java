@@ -1,13 +1,15 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-import racingcar.model.RacingCar;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
+import racingcar.model.RacingCar;
+import racingcar.model.ScoreBoard;
+import racingcar.view.Output;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -61,5 +63,13 @@ class ApplicationTest extends NsTest {
                 throw new RuntimeException();
             }).isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    public void 게임_현황_출력_확인() {
+        ScoreBoard scoreBoard = new ScoreBoard();
+        scoreBoard.getRacingCarStats().add(new RacingCar("test1"));
+        scoreBoard.getRacingCarStats().add(new RacingCar("test2"));
+        assertThat(Output.gameResultAnnounce(scoreBoard)).contains("test1", "test2", "최종우승자");
     }
 }
