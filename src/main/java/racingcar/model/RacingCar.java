@@ -1,10 +1,14 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 /**
  * @author: Minwoo Kim
  * @date 2022/10/09
  */
 public class RacingCar {
+
+    private static final int LOWEST_MOVE_CRITERIA = 4;
     private Name name;
     private Position position;
 
@@ -15,6 +19,12 @@ public class RacingCar {
 
     public String getName() {
         return name.getValue();
+    }
+
+    public void moveOrNot(){
+        if(Randoms.pickNumberInRange(0,9) >= LOWEST_MOVE_CRITERIA){
+            position.incrementValue();
+        }
     }
 
     public int getPosition(){
@@ -40,15 +50,15 @@ public class RacingCar {
 
     private class Position{
         private static final int INCREMENTAL_VALUE = 1;
-        private static final int LOWEST_MOVE_CRITERIA = 4;
+
         private int value;
 
         private int getValue() {
             return value;
         }
 
-        private void setValue(int value) {
-            this.value = value;
+        private void incrementValue(){
+            value += INCREMENTAL_VALUE;
         }
     }
 
