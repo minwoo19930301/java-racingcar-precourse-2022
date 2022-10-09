@@ -21,25 +21,25 @@ public class RacingCarGame {
         scoreBoard.addNewRacingCars(carNames);
     }
 
-    private void setRetryCount(){
+    private void setRetryCount() {
         int retryValue = Input.getRetryCountUntilValid();
         retryCount.setValue(retryValue);
     }
 
-    private void proceedMoving(){
+    private void proceedMoving() {
         Output.initiativePrintStatus();
         int retryValue = retryCount.getValue();
-        for(int i=0; i< retryValue; i++){
+        for (int i = 0; i < retryValue; i++) {
             scoreBoard.moveAllCars();
             Output.printStatus(scoreBoard);
         }
     }
 
-    private void getWinners(){
+    private void getWinners() {
         Output.gameResultAnnounce(scoreBoard);
     }
 
-    public void start(){
+    public void start() {
         createCars();
         setRetryCount();
         proceedMoving();

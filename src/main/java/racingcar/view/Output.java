@@ -21,15 +21,16 @@ public class Output {
         return String.join("", Collections.nCopies(n, ONE_MOVE_OUTPUT_FORMAT));
     }
 
-    public static void initiativePrintStatus(){
+    public static void initiativePrintStatus() {
         System.out.println(GAME_RESULT_ANNOUNCE);
     }
 
 
     public static void printStatus(ScoreBoard scoreBoard) {
-        for(RacingCar car : scoreBoard.getRacingCarStats()){
+        for (RacingCar car : scoreBoard.getRacingCarStats()) {
             String positionOutput = repeatedMoveOutput(car.getPosition());
-            String message = String.format(CAR_STATUS_OUTPUT_PATTERN, car.getName(), positionOutput);
+            String message = String.format(CAR_STATUS_OUTPUT_PATTERN, car.getName(),
+                positionOutput);
             System.out.println(message);
         }
         System.out.println();
@@ -38,7 +39,7 @@ public class Output {
 
     public static void gameResultAnnounce(ScoreBoard scoreBoard) {
         List<String> winnerNames = scoreBoard.findWinners();
-        String result =  String.format(WINNER_ANNOUNCE_PATTERN,
+        String result = String.format(WINNER_ANNOUNCE_PATTERN,
             (String.join(NAME_SPLIT_STANDARD, winnerNames)));
         System.out.println(result);
     }

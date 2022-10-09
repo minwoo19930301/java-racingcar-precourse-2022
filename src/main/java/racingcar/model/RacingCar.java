@@ -10,8 +10,8 @@ import racingcar.util.Validation;
 public class RacingCar {
 
     private static final int LOWEST_MOVE_CRITERIA = 4;
-    private Name name;
-    private Position position;
+    private final Name name;
+    private final Position position;
 
     public RacingCar(String name) {
         this.name = new Name(name);
@@ -22,17 +22,17 @@ public class RacingCar {
         return name.getValue();
     }
 
-    public void moveOrNot(){
-        if(Randoms.pickNumberInRange(0,9) >= LOWEST_MOVE_CRITERIA){
+    public void moveOrNot() {
+        if (Randoms.pickNumberInRange(0, 9) >= LOWEST_MOVE_CRITERIA) {
             position.incrementValue();
         }
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position.getValue();
     }
 
-    private class Name{
+    private class Name {
 
         private final String value;
 
@@ -46,7 +46,8 @@ public class RacingCar {
         }
     }
 
-    private class Position{
+    private class Position {
+
         private static final int INCREMENTAL_VALUE = 1;
 
         private int value;
@@ -55,7 +56,7 @@ public class RacingCar {
             return value;
         }
 
-        private void incrementValue(){
+        private void incrementValue() {
             value += INCREMENTAL_VALUE;
         }
     }

@@ -13,7 +13,7 @@ public class ScoreBoard {
 
     private final List<RacingCar> racingCarStats = new ArrayList<>();
 
-    public List<RacingCar> getRacingCarStats(){
+    public List<RacingCar> getRacingCarStats() {
         return racingCarStats;
     }
 
@@ -30,14 +30,14 @@ public class ScoreBoard {
         return map.get(max);
     }
 
-    public void addNewRacingCars(List<String> carNames){
+    public void addNewRacingCars(List<String> carNames) {
         for (String carName : carNames) {
             racingCarStats.add(new RacingCar(carName));
         }
     }
 
-    public void moveAllCars(){
-        for(RacingCar car : racingCarStats){
+    public void moveAllCars() {
+        for (RacingCar car : racingCarStats) {
             car.moveOrNot();
         }
     }

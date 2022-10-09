@@ -5,6 +5,7 @@ package racingcar.model;
  * @date 2022/10/10
  */
 public class RetryCount {
+
     private int value;
 
     public int getValue() {
