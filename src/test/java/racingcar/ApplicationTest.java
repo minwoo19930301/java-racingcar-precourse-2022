@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
 import racingcar.model.ScoreBoard;
+import racingcar.util.Validation;
 import racingcar.view.Output;
 
 class ApplicationTest extends NsTest {
@@ -71,5 +72,24 @@ class ApplicationTest extends NsTest {
         scoreBoard.getRacingCarStats().add(new RacingCar("test1"));
         scoreBoard.getRacingCarStats().add(new RacingCar("test2"));
         assertThat(Output.gameResultAnnounce(scoreBoard)).contains("test1", "test2", "최종우승자");
+    }
+
+    @Test
+    public void 횟수_아닌_값은_오류(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                Validation.checkRetryCount("-1");
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                Validation.checkRetryCount("1231546879846321357687321");
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                Validation.checkRetryCount("asdfas123");
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
