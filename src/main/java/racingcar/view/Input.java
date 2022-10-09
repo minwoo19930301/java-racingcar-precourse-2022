@@ -3,7 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.model.RacingCar;
+import racingcar.util.Validation;
 
 /**
  * @author: Minwoo Kim
@@ -16,9 +16,9 @@ public class Input {
     private final static String ERROR_FORM_PATTERN = "[ERROR] %s";
     private final static String WRONG_NAME = "잘못된 이름입니다.";
 
-    private static void validateNameByCreatingCar(String[] names){
+    private static void validateEachName(String[] names){
         for(String name : names){
-            new RacingCar(name);
+            Validation.checkName(name);
         }
     }
 
@@ -27,14 +27,12 @@ public class Input {
             try{
                 System.out.println(CAR_NAMES_INQUIRY);
                 String inputString = Console.readLine();
-                String[] result = inputString.split(NAME_SPLIT_STANDARD);
-                validateNameByCreatingCar(result);
-                return Arrays.asList(result);
+                String[] names = inputString.split(NAME_SPLIT_STANDARD);
+                validateEachName(names);
+                return Arrays.asList(names);
             } catch (IllegalArgumentException e){
                 System.out.printf(ERROR_FORM_PATTERN + "%n", WRONG_NAME);
             }
         }
     }
-
-
 }

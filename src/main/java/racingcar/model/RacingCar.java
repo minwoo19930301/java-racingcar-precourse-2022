@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.Validation;
 
 /**
  * @author: Minwoo Kim
@@ -32,14 +33,11 @@ public class RacingCar {
     }
 
     private class Name{
-        private static final int MAXIMUM_LENGTH = 5;
 
         private final String value;
 
         private Name(String value) {
-            if (value == null || value.length() > MAXIMUM_LENGTH || value.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
+            Validation.checkName(value);
             this.value = value;
         }
 
