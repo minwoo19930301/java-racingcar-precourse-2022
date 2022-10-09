@@ -34,10 +34,10 @@ public class RacingCar {
     private class Name{
         private static final int MAXIMUM_LENGTH = 5;
 
-        private String value;
+        private final String value;
 
         private Name(String value) {
-            if (value.length() > MAXIMUM_LENGTH) {
+            if (value == null || value.length() > MAXIMUM_LENGTH || value.isEmpty()) {
                 throw new IllegalArgumentException();
             }
             this.value = value;
