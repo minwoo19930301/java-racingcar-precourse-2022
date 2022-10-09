@@ -35,6 +35,7 @@ public class RacingCarGame {
     }
 
     private void getWinners(){
+        Output.gameResultAnnounce(scoreBoard);
     }
 
     public void start(){

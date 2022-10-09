@@ -31,11 +31,11 @@ public class Output {
     }
 
 
-    public static String gameResultAnnounce(ScoreBoard scoreBoard) {
+    public static void gameResultAnnounce(ScoreBoard scoreBoard) {
         List<String> winnerNames = scoreBoard.findWinners();
-        return String.format(WINNER_ANNOUNCE_PATTERN,
+        String result =  String.format(WINNER_ANNOUNCE_PATTERN,
             (String.join(NAME_SPLIT_STANDARD, winnerNames)));
-
+        System.out.println(result);
     }
 
 }
