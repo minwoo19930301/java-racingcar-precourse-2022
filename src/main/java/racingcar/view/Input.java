@@ -16,9 +16,10 @@ public class Input {
     private final static String ERROR_FORM_PATTERN = "[ERROR] %s";
     private final static String WRONG_NAME = "잘못된 이름입니다.";
 
-    private static void validateEachName(String[] names){
-        for(String name : names){
-            Validation.checkName(name);
+    private static void validateAndTrimEachName(String[] names){
+        for(int i=0; i<names.length; i++){
+            Validation.checkName(names[i]);
+            names[i] = names[i].trim();
         }
     }
 
@@ -28,11 +29,13 @@ public class Input {
                 System.out.println(CAR_NAMES_INQUIRY);
                 String inputString = Console.readLine();
                 String[] names = inputString.split(NAME_SPLIT_STANDARD);
-                validateEachName(names);
+                validateAndTrimEachName(names);
                 return Arrays.asList(names);
             } catch (IllegalArgumentException e){
                 System.out.printf(ERROR_FORM_PATTERN + "%n", WRONG_NAME);
             }
         }
     }
+
+
 }
