@@ -27,6 +27,7 @@ public class RacingCarGame {
     }
 
     private void proceedMoving(){
+        Output.initiativePrintStatus();
         int retryValue = retryCount.getValue();
         for(int i=0; i< retryValue; i++){
             scoreBoard.moveAllCars();
